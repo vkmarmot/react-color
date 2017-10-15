@@ -3,41 +3,49 @@ import PropTypes from 'prop-types'
 import withColorPicker from './withColorPicker'
 
 export const childContextTypes = {
-  hsl: PropTypes.shape({
-    h: PropTypes.number,
-    s: PropTypes.number,
-    l: PropTypes.number,
-    a: PropTypes.number,
+  color: PropTypes.shape({
+    hsl: PropTypes.shape({
+      h: PropTypes.number,
+      s: PropTypes.number,
+      l: PropTypes.number,
+      a: PropTypes.number,
+    }),
+    rgb: PropTypes.shape({
+      r: PropTypes.number,
+      g: PropTypes.number,
+      b: PropTypes.number,
+      a: PropTypes.number,
+    }),
+    hsv: PropTypes.shape({
+      h: PropTypes.number,
+      s: PropTypes.number,
+      v: PropTypes.number,
+      a: PropTypes.number,
+    }),
+    hex: PropTypes.string,
   }),
-  rgb: PropTypes.shape({
-    r: PropTypes.number,
-    g: PropTypes.number,
-    b: PropTypes.number,
-    a: PropTypes.number,
-  }),
-  hsv: PropTypes.shape({
-    h: PropTypes.number,
-    s: PropTypes.number,
-    v: PropTypes.number,
-    a: PropTypes.number,
-  }),
-  hex: PropTypes.string,
-  oldHue: PropTypes.number,
-  source: PropTypes.string,
   onChange: PropTypes.func,
 }
 
 export const ColorWrap = (Picker) => {
 
   class ReactColor extends React.Component {
+    state = {
+      color: {
+        hex: '#333',
+      },
+    }
+
     getChildContext() {
       return {
-        color: {
-          hex: '#333333',
-        },
-        onChange: () => {},
-        onChangeComplete: () => {},
+        ...this.state,
+        onChange: this.handleChange,
       }
+    }
+
+    handleChange = ({ kind, name, value }) => {
+      const { color } = this.state
+      this.setState({ color: { ...color, [name]: value } })
     }
 
     render() {
