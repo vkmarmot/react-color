@@ -24,3 +24,9 @@ export const border = ({ width = 1, style = 'solid', color = '#000' }) => ({
   borderStyle: style,
   borderColor: color,
 })
+
+export const flexCenter = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}
