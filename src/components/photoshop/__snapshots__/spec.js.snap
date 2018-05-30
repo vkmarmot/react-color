@@ -88,16 +88,16 @@ exports[`Photoshop renders correctly 1`] = `
         }
       >
         <style>
-          
+
                     .saturation-white {
-                      background: -webkit-linear-gradient(to right, #fff, rgba(255,255,255,0));
-                      background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+                      background: -webkit-linear-gradient(left, #fff, rgba(255,255,255,0));
+                      background: linear-gradient(left, #fff, rgba(255,255,255,0));
                     }
                     .saturation-black {
-                      background: -webkit-linear-gradient(to top, #000, rgba(0,0,0,0));
-                      background: linear-gradient(to top, #000, rgba(0,0,0,0));
+                      background: -webkit-linear-gradient(bottom, #000, rgba(0,0,0,0));
+                      background: linear-gradient(bottom, #000, rgba(0,0,0,0));
                     }
-                  
+
         </style>
         <div
           className="saturation-white"
@@ -227,21 +227,21 @@ exports[`Photoshop renders correctly 1`] = `
           }
         >
           <style>
-            
+
                         .hue-horizontal {
-                          background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0
+                          background: linear-gradient(left, #f00 0%, #ff0 17%, #0f0
                             33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
-                          background: -webkit-linear-gradient(to right, #f00 0%, #ff0
+                          background: -webkit-linear-gradient(left, #f00 0%, #ff0
                             17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
                         }
-            
+
                         .hue-vertical {
-                          background: linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%,
+                          background: linear-gradient(bottom, #f00 0%, #ff0 17%, #0f0 33%,
                             #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
-                          background: -webkit-linear-gradient(to top, #f00 0%, #ff0 17%,
+                          background: -webkit-linear-gradient(bottom, #f00 0%, #ff0 17%,
                             #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
                         }
-                      
+
           </style>
           <div
             style={

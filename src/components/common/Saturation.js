@@ -92,12 +92,12 @@ export class Saturation extends (PureComponent || Component) {
       >
         <style>{`
           .saturation-white {
-            background: -webkit-linear-gradient(to right, #fff, rgba(255,255,255,0));
-            background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+            background: -webkit-linear-gradient(0deg, #fff, rgba(255,255,255,0));
+            background: linear-gradient(90deg, #fff, rgba(255,255,255,0));
           }
           .saturation-black {
-            background: -webkit-linear-gradient(to top, #000, rgba(0,0,0,0));
-            background: linear-gradient(to top, #000, rgba(0,0,0,0));
+            background: -webkit-linear-gradient(90deg, #000, rgba(0,0,0,0));
+            background: linear-gradient(0deg, #000, rgba(0,0,0,0));
           }
         `}</style>
         <div style={ styles.white } className="saturation-white">

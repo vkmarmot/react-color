@@ -5,6 +5,8 @@ import reactCSS from 'reactcss'
 import color from '../../helpers/color'
 
 import { EditableInput } from '../common'
+import { ChromeField } from './ChromeField'
+import { ChromeFieldsWrap } from './ChromeFieldsWrap';
 import UnfoldMoreHorizontalIcon from '@icons/material/UnfoldMoreHorizontalIcon'
 
 export class ChromeFields extends React.Component {
@@ -90,16 +92,6 @@ export class ChromeFields extends React.Component {
       'default': {
         wrap: {
           paddingTop: '16px',
-          display: 'flex',
-        },
-        fields: {
-          flex: '1',
-          display: 'flex',
-          marginLeft: '-6px',
-        },
-        field: {
-          paddingLeft: '6px',
-          width: '100%',
         },
         alpha: {
           paddingLeft: '6px',
@@ -162,42 +154,42 @@ export class ChromeFields extends React.Component {
 
     let fields
     if (this.state.view === 'hex') {
-      fields = (<div style={ styles.fields } className="flexbox-fix">
-        <div style={ styles.field }>
+      fields = (<ChromeFieldsWrap>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="hex" value={ this.props.hex }
             onChange={ this.handleChange }
           />
-        </div>
-      </div>)
+        </ChromeField>
+      </ChromeFieldsWrap>)
     } else if (this.state.view === 'rgb') {
-      fields = (<div style={ styles.fields } className="flexbox-fix">
-        <div style={ styles.field }>
+      fields = (<ChromeFieldsWrap>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="r"
             value={ this.props.rgb.r }
             onChange={ this.handleChange }
           />
-        </div>
-        <div style={ styles.field }>
+        </ChromeField>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="g"
             value={ this.props.rgb.g }
             onChange={ this.handleChange }
           />
-        </div>
-        <div style={ styles.field }>
+        </ChromeField>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="b"
             value={ this.props.rgb.b }
             onChange={ this.handleChange }
           />
-        </div>
-        <div style={ styles.alpha }>
+        </ChromeField>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="a"
@@ -205,35 +197,35 @@ export class ChromeFields extends React.Component {
             arrowOffset={ 0.01 }
             onChange={ this.handleChange }
           />
-        </div>
-      </div>)
+        </ChromeField>
+      </ChromeFieldsWrap>)
     } else if (this.state.view === 'hsl') {
-      fields = (<div style={ styles.fields } className="flexbox-fix">
-        <div style={ styles.field }>
+      fields = (<ChromeFieldsWrap>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="h"
             value={ Math.round(this.props.hsl.h) }
             onChange={ this.handleChange }
           />
-        </div>
-        <div style={ styles.field }>
+        </ChromeField>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="s"
             value={ `${ Math.round(this.props.hsl.s * 100) }%` }
             onChange={ this.handleChange }
           />
-        </div>
-        <div style={ styles.field }>
+        </ChromeField>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="l"
             value={ `${ Math.round(this.props.hsl.l * 100) }%` }
             onChange={ this.handleChange }
           />
-        </div>
-        <div style={ styles.alpha }>
+        </ChromeField>
+        <ChromeField>
           <EditableInput
             style={{ input: styles.input, label: styles.label }}
             label="a"
@@ -241,12 +233,12 @@ export class ChromeFields extends React.Component {
             arrowOffset={ 0.01 }
             onChange={ this.handleChange }
           />
-        </div>
-      </div>)
+        </ChromeField>
+      </ChromeFieldsWrap>)
     }
 
     return (
-      <div style={ styles.wrap } className="flexbox-fix">
+      <div style={ styles.wrap } className="flexbox-fix display-flex">
         { fields }
         <div style={ styles.toggle }>
           <div style={ styles.icon } onClick={ this.toggleViews } ref={ (icon) => this.icon = icon }>

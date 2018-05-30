@@ -42,7 +42,7 @@ export const SketchPresetColors = ({ colors, onClick = () => {}, onSwatchHover }
   }
 
   return (
-    <div style={ styles.colors } className="flexbox-fix">
+    <div style={ styles.colors } className="flexbox-fix sketch-colors">
       { colors.map((colorObjOrString) => {
         const c = typeof colorObjOrString === 'string'
           ? { color: colorObjOrString }

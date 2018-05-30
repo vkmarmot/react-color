@@ -2,7 +2,15 @@ import React, { Component, PureComponent } from 'react'
 import reactCSS from 'reactcss'
 import * as alpha from '../../helpers/alpha'
 
-import Checkboard from './Checkboard'
+import Checkboard from './Checkboard';
+
+const DIRECTION = {
+    vertical: 'to bottom'
+};
+
+const DIRECTION_WEBKIT = {
+    vertical: 'top'
+};
 
 export class Alpha extends (PureComponent || Component) {
   componentWillUnmount() {
@@ -44,8 +52,6 @@ export class Alpha extends (PureComponent || Component) {
         },
         gradient: {
           absolute: '0px 0px 0px 0px',
-          background: `linear-gradient(to right, rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 0) 0%,
-           rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 1) 100%)`,
           boxShadow: this.props.shadow,
           borderRadius: this.props.radius,
         },
@@ -69,10 +75,6 @@ export class Alpha extends (PureComponent || Component) {
         },
       },
       'vertical': {
-        gradient: {
-          background: `linear-gradient(to bottom, rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 0) 0%,
-           rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 1) 100%)`,
-        },
         pointer: {
           left: 0,
           top: `${ rgb.a * 100 }%`,
@@ -86,12 +88,22 @@ export class Alpha extends (PureComponent || Component) {
       overwrite: true,
     })
 
+    const STYLE = `
+      .alpha-gradient {
+        background: -webkit-linear-gradient(${DIRECTION_WEBKIT[this.props.direction] || 'left'}, rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 0) 0%,
+           rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 1) 100%);
+        background: linear-gradient(${DIRECTION[this.props.direction] || 'to right'}, rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 0) 0%,
+           rgba(${ rgb.r },${ rgb.g },${ rgb.b }, 1) 100%);
+      }
+    `;
+
     return (
       <div style={ styles.alpha }>
+          <style>{STYLE}</style>
         <div style={ styles.checkboard }>
           <Checkboard renderers={ this.props.renderers } />
         </div>
-        <div style={ styles.gradient } />
+        <div style={ styles.gradient } className="alpha-gradient" />
         <div
           style={ styles.container }
           ref={ container => this.container = container }

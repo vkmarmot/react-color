@@ -81,8 +81,8 @@ export const SketchFields = ({ onChange, rgb, hsl, hex, disableAlpha }) => {
   }
 
   return (
-    <div style={ styles.fields } className="flexbox-fix">
-      <div style={ styles.double }>
+    <div style={ styles.fields } className="flexbox-fix sketch-fields">
+      <div style={ styles.double } className="sketch-field sketch-field-double">
         <EditableInput
           style={{ input: styles.input, label: styles.label }}
           label="hex"
@@ -90,7 +90,7 @@ export const SketchFields = ({ onChange, rgb, hsl, hex, disableAlpha }) => {
           onChange={ handleChange }
         />
       </div>
-      <div style={ styles.single }>
+      <div style={ styles.single } className="sketch-field">
         <EditableInput
           style={{ input: styles.input, label: styles.label }}
           label="r"
@@ -100,7 +100,7 @@ export const SketchFields = ({ onChange, rgb, hsl, hex, disableAlpha }) => {
           dragMax="255"
         />
       </div>
-      <div style={ styles.single }>
+      <div style={ styles.single } className="sketch-field">
         <EditableInput
           style={{ input: styles.input, label: styles.label }}
           label="g"
@@ -110,7 +110,7 @@ export const SketchFields = ({ onChange, rgb, hsl, hex, disableAlpha }) => {
           dragMax="255"
         />
       </div>
-      <div style={ styles.single }>
+      <div style={ styles.single } className="sketch-field">
         <EditableInput
           style={{ input: styles.input, label: styles.label }}
           label="b"
@@ -120,7 +120,7 @@ export const SketchFields = ({ onChange, rgb, hsl, hex, disableAlpha }) => {
           dragMax="255"
         />
       </div>
-      <div style={ styles.alpha }>
+      <div style={ styles.alpha } className="sketch-field">
         <EditableInput
           style={{ input: styles.input, label: styles.label }}
           label="a"

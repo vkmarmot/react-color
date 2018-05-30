@@ -7,6 +7,16 @@ import ChromeFields from './ChromeFields'
 import ChromePointer from './ChromePointer'
 import ChromePointerCircle from './ChromePointerCircle'
 
+
+const STYLE = `
+  .display-flex {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -webkit-flex;
+      display: flex;
+  }
+`;
+
 export const Chrome = ({ onChange, disableAlpha, rgb, hsl, hsv, hex, renderers,
   className = '' }) => {
   const styles = reactCSS({
@@ -32,9 +42,6 @@ export const Chrome = ({ onChange, disableAlpha, rgb, hsl, hsv, hex, renderers,
       body: {
         padding: '16px 16px 12px',
       },
-      controls: {
-        display: 'flex',
-      },
       color: {
         width: '32px',
       },
@@ -52,9 +59,6 @@ export const Chrome = ({ onChange, disableAlpha, rgb, hsl, hsv, hex, renderers,
         boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
         background: `rgba(${ rgb.r }, ${ rgb.g }, ${ rgb.b }, ${ rgb.a })`,
         zIndex: '2',
-      },
-      toggles: {
-        flex: '1',
       },
       hue: {
         height: '10px',
@@ -92,6 +96,7 @@ export const Chrome = ({ onChange, disableAlpha, rgb, hsl, hsv, hex, renderers,
 
   return (
     <div style={ styles.picker } className={ `chrome-picker ${ className }` }>
+        <style>{STYLE}</style>
       <div style={ styles.saturation }>
         <Saturation
           style={ styles.Saturation }
@@ -102,14 +107,14 @@ export const Chrome = ({ onChange, disableAlpha, rgb, hsl, hsv, hex, renderers,
         />
       </div>
       <div style={ styles.body }>
-        <div style={ styles.controls } className="flexbox-fix">
+        <div className="flexbox-fix chrome-controls display-flex">
           <div style={ styles.color }>
             <div style={ styles.swatch }>
               <div style={ styles.active } />
               <Checkboard renderers={ renderers } />
             </div>
           </div>
-          <div style={ styles.toggles }>
+          <div className="chrome-toggles">
             <div style={ styles.hue }>
               <Hue
                 style={ styles.Hue }
