@@ -1,5 +1,5 @@
 {
-  "name": "@stc/react-color",
+  "name": "@vkmarmot/react-color",
   "version": "2.16.0",
   "description": "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "main": "lib/index.js",
